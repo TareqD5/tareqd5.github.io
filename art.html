@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>qer.at</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/images/favicon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="css/style.css"
+    />
+    <style>
+      .page-art {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        background: var(--bg-main);
+        width: 100%;
+      }
+
+      .art-gallery {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: var(--bg-main);
+      }
+
+      body.art-page {
+        overflow: hidden;
+      }
+
+      .art-image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 0 80px 0;
+      }
+
+      .art-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .art-nav-arrow {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: auto;
+        height: auto;
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+        font-size: 3rem;
+        user-select: none;
+        transition: all 300ms ease-out;
+        z-index: 100;
+        padding: 1rem;
+        line-height: 1;
+      }
+
+      .art-nav-arrow:hover {
+        color: var(--accent-alt);
+        transform: translateY(-50%) scale(1.2);
+      }
+
+      .art-nav-arrow:active {
+        transform: translateY(-50%) scale(0.9);
+      }
+
+      .art-arrow-prev {
+        left: 1.5rem;
+      }
+
+      .art-arrow-next {
+        right: 1.5rem;
+      }
+
+      .art-info {
+        display: none;
+      }
+
+      .art-credit {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        z-index: 5;
+      }
+
+      @media (max-width: 768px) {
+        .art-nav-arrow {
+          font-size: 2rem;
+          padding: 0.75rem;
+        }
+
+        .art-arrow-prev {
+          left: 1rem;
+        }
+
+        .art-arrow-next {
+          right: 1rem;
+        }
+
+        .art-info {
+          font-size: 0.8rem;
+          padding: 0.5rem 1rem;
+          bottom: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .art-nav-arrow {
+          font-size: 1.5rem;
+          padding: 0.5rem;
+        }
+
+        .art-arrow-prev {
+          left: 0.5rem;
+        }
+
+        .art-arrow-next {
+          right: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="art-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <nav class="site-nav" aria-label="Navigation principale">
+          <a href="welcome.html" class="button-57" role="button">
+            <span class="text">welcome</span>
+            <span>seeking</span>
+          </a>
+          <a href="me.html" class="button-57" role="button">
+            <span class="text">me</span>
+            <span>an</span>
+          </a>
+          <a href="now.html" class="button-57" role="button">
+            <span class="text">now</span>
+            <span>end</span>
+          </a>
+          <a href="projects.html" class="button-57" role="button">
+            <span class="text">my projects</span>
+            <span>of</span>
+          </a>
+          <a href="art.html" class="button-57 is-active" role="button">
+            <span class="text">my art</span>
+            <span>study</span>
+          </a>
+          <a href="links.html" class="button-57" role="button">
+            <span class="text">some links</span>
+            <span>internship</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-wrapper page-art">
+        <div class="art-gallery">
+          <div class="art-image-container">
+            <img 
+              class="art-image" 
+              id="art-main-image" 
+              src="assets/images/website_images/aDSCF0133.jpg" 
+              alt="Art gallery image"
+            />
+          </div>
+          
+          <button 
+            class="art-nav-arrow art-arrow-prev" 
+            id="art-prev-btn" 
+            aria-label="Image précédente"
+          >
+            ‹
+          </button>
+          
+          <button 
+            class="art-nav-arrow art-arrow-next" 
+            id="art-next-btn" 
+            aria-label="Image suivante"
+          >
+            ›
+          </button>
+
+          <div class="art-credit">
+            shot on fujifilm xt-20 - viltrox af 85mm f/1.8
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const artImages = [
+        "aDSCF0133.jpg",
+        "bDSCF0099.jpg",
+        "bDSCF0905.jpg",
+        "DSCF0272.jpg",
+        "DSCF0278.jpg",
+        "DSCF0312.jpg",
+        "DSCF0750.jpg",
+        "DSCF0845.jpg",
+        "DSCF0984.jpg",
+        "Maontagnut_2024-11.jpg",
+        "Maontagnut_2024-14.jpg",
+        "Maontagnut_2024-3.jpg",
+        "Maontagnut_2024-6.jpg",
+        "MaontagnUT_2025_portrait-11.jpg",
+        "MaontagnUT_2025_portrait-28.jpg",
+        "MaontagnUT_2025_portrait-33.jpg",
+        "MaontagnUT_2025_portrait-43.jpg",
+        "MaontagnUT_2025_portrait-69.jpg",
+        "MaontagnUT_2025_portrait-9.jpg",
+        "Montagnut_2024-10.jpg",
+        "Montagnut_2024-2.jpg",
+        "Montagnut_2024-4.jpg",
+        "Montagnut_2024-5.jpg",
+        "MontagnUT_2025_portrait-68.jpg",
+        "Samoëns_fav (1 sur 8).jpg",
+        "Samoëns_fav (2 sur 8).jpg",
+        "Samoëns_fav (3 sur 8).jpg",
+        "Samoëns_fav (4 sur 8).jpg",
+        "Samoëns_fav (5 sur 8).jpg",
+        "Samoëns_fav (6 sur 8).jpg",
+        "xLixus-4.jpg",
+        "xLixus-86.jpg",
+        "y29012024-DSCF1872.jpg",
+        "y31012024-DSCF2096.jpg",
+        "z27012024-DSCF0842-2.jpg",
+        "z27012024-DSCF0890-2.jpg"
+      ];
+
+      let currentIndex = 0;
+      const imageElement = document.getElementById("art-main-image");
+      const infoElement = document.getElementById("art-info");
+      const prevBtn = document.getElementById("art-prev-btn");
+      const nextBtn = document.getElementById("art-next-btn");
+
+      function updateImage(index) {
+        currentIndex = (index + artImages.length) % artImages.length;
+        imageElement.src = `assets/images/website_images/${artImages[currentIndex]}`;
+        imageElement.alt = `Art gallery image ${currentIndex + 1}`;
+        infoElement.textContent = `${currentIndex + 1} / ${artImages.length}`;
+      }
+
+      function goToNextImage() {
+        updateImage(currentIndex + 1);
+      }
+
+      function goToPrevImage() {
+        updateImage(currentIndex - 1);
+      }
+
+      // Initialiser avec la première image au chargement
+      window.addEventListener("load", () => {
+        updateImage(0);
+      });
+
+      // Event listeners pour les boutons
+      nextBtn.addEventListener("click", goToNextImage);
+      prevBtn.addEventListener("click", goToPrevImage);
+
+      // Navigation au clavier
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight") {
+          goToNextImage();
+        } else if (event.key === "ArrowLeft") {
+          goToPrevImage();
+        }
+      });
+    </script>
+  </body>
+</html>
