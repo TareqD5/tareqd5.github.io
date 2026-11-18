@@ -23,27 +23,27 @@
         <nav class="site-nav" aria-label="Navigation principale">
           <a href="index.html" class="button-57 is-active" role="button">
             <span class="text">welcome</span>
-            <span>seeking</span>
+            <span>welcome</span>
           </a>
           <a href="me.html" class="button-57" role="button">
             <span class="text">me</span>
-            <span>an</span>
+            <span>me</span>
           </a>
           <a href="now.html" class="button-57" role="button">
             <span class="text">now</span>
-            <span>end</span>
+            <span>now</span>
           </a>
           <a href="projects.html" class="button-57" role="button">
             <span class="text">my projects</span>
-            <span>of</span>
+            <span>my projects</span>
           </a>
           <a href="art.html" class="button-57" role="button">
             <span class="text">my art</span>
-            <span>study</span>
+            <span>my art</span>
           </a>
           <a href="links.html" class="button-57" role="button">
             <span class="text">some links</span>
-            <span>internship</span>
+            <span>some links</span>
           </a>
         </nav>
       </div>
@@ -106,6 +106,60 @@
                     rel="noreferrer noopener"
                     >github link</a
                   >
+                </li>
+
+                <li class="project-item">
+                  <h3 class="project-title">
+                    research with heudiasyc on internet of drones security
+                  </h3>
+                  <p class="project-text">
+                    research project in collaboration with the
+                    <a
+                      href="https://www.hds.utc.fr/"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      >heudiasyc</a
+                    >
+                    lab at utc, studying security and resilience of the internet of
+                    drones (iod): threat models, protection mechanisms, and trusted
+                    architectures. co-authored a paper (publication in preparation) 
+                    proposing man-in-the-middle attack detection using machine 
+                    learning for drone swarms in the iod (supervised by ghada jaber, 
+                    associate professor, utc).
+                  </p>
+                </li>
+
+                <li class="project-item">
+                  <h3 class="project-title">
+                    rag (retrieval-augmented generation) for the french highway code
+                  </h3>
+                  <p class="project-text">
+                    building a rag to use an llm as a teacher to learn the french highway code using gemini api.
+                  </p>
+                </li>
+                
+                <li class="project-item">
+                  <h3 class="project-title">
+                    estimating the carbon footprint of an international
+                    organization
+                  </h3>
+                  <p class="project-text">
+                    building a data platform to estimate the greenhouse gas
+                    footprint (missions, travel, it equipment, purchases) of an
+                    international company or ngo, with a strong focus on data
+                    modeling and reproducible pipelines.
+                  </p>
+                </li>
+
+                <li class="project-item">
+                  <h3 class="project-title">
+                    information retrieval system for an adit-based archive
+                  </h3>
+                  <p class="project-text">
+                    designing an indexing and search system over a document archive
+                    built from adit content, with emphasis on text processing and
+                    retrieval quality rather than ui.
+                  </p>
                 </li>
 
                 <li class="project-item">
@@ -219,53 +273,13 @@
               <ul class="projects-list">
                 <li class="project-item">
                   <h3 class="project-title">
-                    estimating the carbon footprint of an international
-                    organization
+                    confidential projects with shift technology
                   </h3>
                   <p class="project-text">
-                    building a data platform to estimate the greenhouse gas
-                    footprint (missions, travel, it equipment, purchases) of an
-                    international company or ngo, with a strong focus on data
-                    modeling and reproducible pipelines.
-                  </p>
-                </li>
-
-                <li class="project-item">
-                  <h3 class="project-title">
-                    information retrieval system for an adit-based archive
-                  </h3>
-                  <p class="project-text">
-                    designing an indexing and search system over a document archive
-                    built from adit content, with emphasis on text processing and
-                    retrieval quality rather than ui.
-                  </p>
-                </li>
-
-                <li class="project-item extra-ongoing">
-                  <h3 class="project-title">
-                    research with heudiasyc on internet of drones security
-                  </h3>
-                  <p class="project-text">
-                    research project in collaboration with the
-                    <a
-                      href="https://www.hds.utc.fr/"
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      >heudiasyc</a
-                    >
-                    lab at utc, studying security and resilience of the internet of
-                    drones (iod): threat models, protection mechanisms, and trusted
-                    architectures.
-                  </p>
+                    building tools to help data scientists @ shift technology, using agentic ai, llms, and some other cool technologies.
+                  </p>  
                 </li>
               </ul>
-              <button
-                class="projects-see-more"
-                type="button"
-                data-target="ongoing"
-              >
-                see more ↓
-              </button>
             </div>
           </div>
         </section>
@@ -273,33 +287,24 @@
     </main>
     <script>
       (function () {
-        const buttons = document.querySelectorAll(".projects-see-more");
-        buttons.forEach((btn) => {
-          let isExpanded = false;
-          
-          btn.addEventListener("click", () => {
-            const target = btn.getAttribute("data-target");
-            const column = btn.closest(".projects-column");
-            const allItems = column.querySelectorAll(".project-item");
-            
-            // Pour "recent", affiche tous les projets à partir du 3ème
-            if (target === "recent") {
-              allItems.forEach((item, index) => {
-                if (index >= 2) {
-                  item.style.display = isExpanded ? "none" : "block";
-                }
-              });
-            } else {
-              // Pour "ongoing", affiche les extra-ongoing
-              const extras = column.querySelectorAll(".project-item.extra-ongoing");
-              extras.forEach((el) => {
-                el.style.display = isExpanded ? "none" : "block";
-              });
+        const button = document.querySelector('[data-target="recent"]');
+
+        if (!button) return;
+
+        let isExpanded = false;
+
+        button.addEventListener("click", () => {
+          const column = button.closest(".projects-column");
+          const allItems = column.querySelectorAll(".project-item");
+
+          allItems.forEach((item, index) => {
+            if (index >= 2) {
+              item.style.display = isExpanded ? "none" : "block";
             }
-            
-            isExpanded = !isExpanded;
-            btn.textContent = isExpanded ? "see less ↑" : "see more ↓";
           });
+
+          isExpanded = !isExpanded;
+          button.textContent = isExpanded ? "see less ↑" : "see more ↓";
         });
       })();
     </script>
